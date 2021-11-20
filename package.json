@@ -1,0 +1,28 @@
+{
+  "name": "uwu-bot",
+  "version": "2.0.0",
+  "description": "funny little discord bot",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tronfy/uwu.git"
+  },
+  "keywords": [
+    "discord",
+    "discord.js"
+  ],
+  "author": {
+    "name": "tronfy",
+    "email": "tronfy@pm.me",
+    "url": "https://github.com/tronfy"
+  },
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "discord.js": "^13.3.1",
+    "dotenv": "^10.0.0"
+  }
+}
