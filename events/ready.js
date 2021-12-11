@@ -1,13 +1,15 @@
 const db = require('../db.json')
 const RandomList = require('../util/RandomList')
 
-module.exports = uwu => {
+module.exports = async uwu => {
   uwu.user.setPresence({
     activities: [{ name: `${uwu.prefix} help` }],
     status: 'online',
   })
 
-  uwu.owner = uwu.users.resolve(uwu.ownerId)
+  uwu.owner = await uwu.users.fetch(uwu.ownerId)
+
+  uwu.msg = db.msg
 
   uwu.hipocrisias = new RandomList(db.hipocrisias)
 
