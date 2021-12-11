@@ -2,6 +2,9 @@ const { MessageEmbed } = require('discord.js')
 
 exports.description = 'inicia uma votação'
 
+exports.usage =
+  '`uwu vote [pergunta]`\nou\n`uwu vote [título]\n[opção 1]\n[opção 2]\n[opção n...]`'
+
 const alphabet = {
   a: '🇦',
   b: '🇧',
@@ -34,16 +37,19 @@ const alphabet = {
 exports.run = async (uwu, message, args) => {
   const options = args.join(' ').split('\n')
 
+  if (!options[0] || options.length === 2)
+    return message.reply(uwu.msg.unknown + this.usage)
+
   const embed = new MessageEmbed()
     .setColor(uwu.color)
     .setTitle(options[0])
-    .setAuthor('votação')
     .setFooter(
       `iniciada por ${message.author.username}`,
       `${message.author.avatarURL()}`
     )
 
   if (options.length === 1) {
+    if (!options[0].endsWith('?')) embed.setTitle(options[0] + '?')
     const poll = await message.channel.send({ embeds: [embed] })
     await poll.react('✅')
     await poll.react('❎')
