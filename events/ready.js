@@ -1,4 +1,5 @@
 const db = require('../db.json')
+const { logD, logStart } = require('../util/log')
 const RandomList = require('../util/RandomList')
 
 module.exports = async uwu => {
@@ -18,5 +19,5 @@ module.exports = async uwu => {
   uwu.owo.cantadas = new RandomList(db.owo.cantadas)
   uwu.owo.emotes = new RandomList(db.owo.emotes)
 
-  console.log('ready!')
+  logStart()
 }
