@@ -1,6 +1,8 @@
 {
   "msg": {
-    "unknown": "não entendi! tente:\n"
+    "unknown": "não entendi! tente:\n",
+    "not_found": "hm... não achei nada!",
+    "server_timeout": "não consegui me conectar ao servidor"
   },
   "hipocrisias": [
     "hipotermia",

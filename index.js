@@ -8,6 +8,7 @@ const uwu = new Client({
 
 uwu.prefix = 'uwu'
 uwu.ownerId = process.env.OWNER
+uwu.minecraftIp = process.env.MINECRAFT_IP
 uwu.color = '#ffffff'
 
 const events = fs.readdirSync('./events').filter(file => file.endsWith('.js'))
