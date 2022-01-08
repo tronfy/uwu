@@ -14,7 +14,10 @@ exports.run = (uwu, message, _args) => {
         res.players.online != 1 ? 's' : ''
       } online`
       if (res.players.online > 0)
-        online += `: ${res.players.sample.map(x => x.name).join(',')}`
+        online += `: ${res.players.sample
+          .sort()
+          .map(x => x.name)
+          .join(', ')}`
 
       const embed = new MessageEmbed()
         .setColor(uwu.color)
