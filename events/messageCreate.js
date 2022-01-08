@@ -1,4 +1,4 @@
-module.exports = (uwu, message) => {
+module.exports = async (uwu, message) => {
   // ignore bots
   if (message.author.bot) return
 
@@ -15,5 +15,6 @@ module.exports = (uwu, message) => {
   const command = uwu.commands.get(cmd)
   if (!command) return
 
-  command.run(uwu, message, args)
+  message.channel.sendTyping()
+  await command.run(uwu, message, args)
 }
