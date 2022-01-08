@@ -1,5 +1,5 @@
 const db = require('../db.json')
-const { logD, logStart } = require('../util/log')
+const { logStart } = require('../util/log')
 const RandomList = require('../util/RandomList')
 
 module.exports = async uwu => {
