@@ -15,6 +15,6 @@ module.exports = async (uwu, message) => {
   const command = uwu.commands.get(cmd)
   if (!command) return
 
-  message.channel.sendTyping()
+  await message.channel.sendTyping()
   await command.run(uwu, message, args)
 }
