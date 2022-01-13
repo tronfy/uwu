@@ -10,7 +10,10 @@ exports.run = (uwu, message, _args) => {
     .setFooter(`por ${uwu.owner.tag}`, `${uwu.owner.avatarURL()}`)
 
   for (const cmd of uwu.commands)
-    if (cmd[1].description) embed.addField(cmd[0], cmd[1].description, true)
+    if (cmd[1].description) {
+      const title = cmd[1].usage ? cmd[1].usage : cmd[0]
+      embed.addField(title, cmd[1].description, true)
+    }
 
   message.channel.send({ embeds: [embed] })
 }

@@ -1,10 +1,11 @@
 const https = require('https')
 const { MessageEmbed } = require('discord.js')
 const msToTime = require('../util/msToTime')
+const usage = require('../util/usage')
 
 exports.description = 'info de uma run no splits.io'
 
-exports.usage = '`uwu run [código]`'
+exports.usage = 'run [código]'
 
 const url = 'https://splits.io/'
 const api = 'https://splits.io/api/v4/'
@@ -12,7 +13,7 @@ const runs = 'runs/'
 // const runner = 'runner/'
 
 exports.run = (uwu, message, args) => {
-  if (args.length != 1) return message.reply(uwu.msg.unknown + this.usage)
+  if (args.length != 1) return message.reply(usage(this.usage))
 
   const code = args[0]
 
