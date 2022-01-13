@@ -25,9 +25,4 @@ exports.logE = (message, exception) => {
 exports.logW = (message, warning) =>
   log(`regarding ${message}, beware:\n${warning}`, console.warn)
 
-exports.logD = info => log(info, console.info)
-
-exports.logStart = () => {
-  this.logD(`client login at ${new Date().toLocaleString()}`)
-  this.logD('uwu is ready!')
-}
+exports.logI = info => log(info, console.info)

@@ -1,9 +1,15 @@
 const { Client, Intents, Collection } = require('discord.js')
 const fs = require('fs')
+const { logI } = require('./util/log')
 require('dotenv').config()
 
 const uwu = new Client({
-  intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],
+  intents: [
+    Intents.FLAGS.GUILDS,
+    Intents.FLAGS.GUILD_MESSAGES,
+    Intents.FLAGS.DIRECT_MESSAGES,
+  ],
+  partials: ['CHANNEL'],
 })
 
 uwu.prefix = 'uwu'
@@ -30,4 +36,11 @@ for (const file of commands) {
   uwu.commands.set(name, command)
 }
 
+process.on('SIGINT', () => {
+  uwu.destroy()
+  logI('logging out\n')
+  process.exit(0)
+})
+
+logI('logging in...')
 uwu.login(process.env.TOKEN)
