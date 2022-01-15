@@ -23,7 +23,7 @@ export const run: Command = (uwu, message, _args) => {
         .setColor(uwu.data.color)
         .setTitle(motd[0])
         .setDescription(`\`${uwu.data.minecraftIp}\`\n${online}`)
-        .setFooter(`rodando ${version}`)
+        .setFooter({ text: `rodando ${version}` })
 
       message.channel.send({ embeds: [embed] })
     })

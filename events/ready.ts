@@ -1,4 +1,4 @@
-import UwU from 'src/interfaces/UwU'
+import UwU from 'interfaces/UwU'
 import { logI } from '../util/log'
 
 export default async (uwu: UwU) => {

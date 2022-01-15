@@ -1,5 +1,5 @@
 import { Message } from 'discord.js'
-import UwU from 'src/interfaces/UwU'
+import UwU from 'interfaces/UwU'
 
 export default async (uwu: UwU, message: Message) => {
   // ignore bots

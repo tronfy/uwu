@@ -1,5 +1,5 @@
 import { Client, User } from 'discord.js'
-import RandomList from 'src/util/RandomList'
+import RandomList from 'util/RandomList'
 
 export default interface UwU {
   client: Client
