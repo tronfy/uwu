@@ -1,9 +1,9 @@
-export default class RandomList {
+export default class RandomList<T> {
   cur: number
   max: number
-  items: any[]
+  items: T[]
 
-  constructor(items: any[]) {
+  constructor(items: T[]) {
     this.cur = 0
     this.max = 0
     this.items = []
