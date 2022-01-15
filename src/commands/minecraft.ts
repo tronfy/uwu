@@ -1,10 +1,10 @@
-const { MessageEmbed } = require('discord.js')
-const mc = require('minecraft-server-util')
-const { logE } = require('../util/log')
+import { MessageEmbed } from 'discord.js'
+import mc from 'minecraft-server-util'
+import { logE } from '../util/log'
 
-exports.description = 'info do server de mine'
+export const description = 'info do server de mine'
 
-exports.run = (uwu, message, _args) => {
+export const run: Command = (uwu, message, _args) => {
   mc.status(uwu.minecraftIp, 25565)
     .then(res => {
       const version = res.version.name.toLowerCase()
@@ -14,8 +14,8 @@ exports.run = (uwu, message, _args) => {
         res.players.online != 1 ? 's' : ''
       } online`
       if (res.players.online > 0)
-        online += `: ${res.players.sample
-          .sort()
+        online += `: ${res.players
+          .sample!.sort()
           .map(x => x.name)
           .join(', ')}`
 

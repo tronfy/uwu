@@ -1,24 +1,25 @@
-const https = require('https')
-const { MessageEmbed } = require('discord.js')
-const msToTime = require('../util/msToTime')
-const usage = require('../util/usage')
+import https from 'https'
+import { MessageEmbed } from 'discord.js'
+import ms_to_time from '../util/ms_to_time'
+import usage_fmt from '../util/usage_fmt'
+import { ClientRequest } from 'http'
 
-exports.description = 'info de uma run no splits.io'
+export const description = 'info de uma run no splits.io'
 
-exports.usage = 'run [código]'
+export const usage = 'run [código]'
 
 const url = 'https://splits.io/'
 const api = 'https://splits.io/api/v4/'
 const runs = 'runs/'
 // const runner = 'runner/'
 
-exports.run = (uwu, message, args) => {
-  if (args.length != 1) return message.reply(usage(this.usage))
+export const run: Command = (uwu, message, args) => {
+  if (args.length != 1) return message.reply(usage_fmt(uwu, usage))
 
   const code = args[0]
 
   let run
-  const req = https.get(api + runs + code, res => {
+  const req: ClientRequest = https.get(api + runs + code, res => {
     if (res.statusCode != 200) {
       message.channel.send(uwu.msg.not_found)
       return req.end()
@@ -37,13 +38,13 @@ exports.run = (uwu, message, args) => {
         case 'game':
           duration = run.gametime_duration_ms
           sum_of_best = run.gametime_sum_of_best_ms
-          gold = run.segments.filter(s => s.gametime_gold).length
+          gold = run.segments.filter((s: any) => s.gametime_gold).length
           break
 
         case 'real':
           duration = run.realtime_duration_ms
           sum_of_best = run.realtime_sum_of_best_ms
-          gold = run.segments.filter(s => s.realtime_gold).length
+          gold = run.segments.filter((s: any) => s.realtime_gold).length
           break
 
         default:
@@ -51,12 +52,12 @@ exports.run = (uwu, message, args) => {
       }
 
       let description =
-        `${msToTime(run.gametime_duration_ms)} (game time)\n` +
-        `${msToTime(run.realtime_duration_ms)} (real time)\n` +
+        `${ms_to_time(run.gametime_duration_ms)} (game time)\n` +
+        `${ms_to_time(run.realtime_duration_ms)} (real time)\n` +
         '\n' +
         `${gold}/${segments} gold\n` +
-        `sum of best: ${msToTime(sum_of_best)}\n` +
-        `${msToTime(duration - sum_of_best)} timesave possível\n` +
+        `sum of best: ${ms_to_time(sum_of_best)}\n` +
+        `${ms_to_time(duration - sum_of_best)} timesave possível\n` +
         '\n' +
         `splits.io: ${url + code}`
 
@@ -68,7 +69,7 @@ exports.run = (uwu, message, args) => {
       const embed = new MessageEmbed()
         .setColor(uwu.color)
         .setTitle(
-          `${run.game.name.toLowerCase()} - ${run.category.name.toLowerCase()} ${msToTime(
+          `${run.game.name.toLowerCase()} - ${run.category.name.toLowerCase()} ${ms_to_time(
             duration,
             false
           )}`
