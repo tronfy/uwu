@@ -5,7 +5,7 @@ import { logE } from '../util/log'
 export const description = 'info do server de mine'
 
 export const run: Command = (uwu, message, _args) => {
-  mc.status(uwu.minecraftIp, 25565)
+  mc.status(uwu.data.minecraftIp, 25565)
     .then(res => {
       const version = res.version.name.toLowerCase()
       const motd = res.motd.clean.split('\n').map(x => x.trim())
@@ -20,15 +20,15 @@ export const run: Command = (uwu, message, _args) => {
           .join(', ')}`
 
       const embed = new MessageEmbed()
-        .setColor(uwu.color)
+        .setColor(uwu.data.color)
         .setTitle(motd[0])
-        .setDescription(`\`${uwu.minecraftIp}\`\n${online}`)
+        .setDescription(`\`${uwu.data.minecraftIp}\`\n${online}`)
         .setFooter(`rodando ${version}`)
 
       message.channel.send({ embeds: [embed] })
     })
     .catch(e => {
       logE(message, e)
-      message.channel.send(uwu.msg.server_timeout)
+      message.channel.send(uwu.db.msg.server_timeout)
     })
 }

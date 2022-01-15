@@ -21,7 +21,7 @@ export const run: Command = (uwu, message, args) => {
   let run
   const req: ClientRequest = https.get(api + runs + code, res => {
     if (res.statusCode != 200) {
-      message.channel.send(uwu.msg.not_found)
+      message.channel.send(uwu.db.msg.not_found)
       return req.end()
     }
 
@@ -67,7 +67,7 @@ export const run: Command = (uwu, message, args) => {
       if (run.video_url) description += '\nassista aqui: ' + run.video_url
 
       const embed = new MessageEmbed()
-        .setColor(uwu.color)
+        .setColor(uwu.data.color)
         .setTitle(
           `${run.game.name.toLowerCase()} - ${run.category.name.toLowerCase()} ${ms_to_time(
             duration,
@@ -94,7 +94,7 @@ export const run: Command = (uwu, message, args) => {
   })
 
   req.on('error', _error => {
-    message.reply(uwu.msg.notfound)
+    message.reply(uwu.db.msg.notfound)
     req.end()
   })
 }

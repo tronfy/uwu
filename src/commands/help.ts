@@ -5,7 +5,7 @@ export const description = 'essa lista aqui'
 export const run: Command = async (uwu, message, _args) => {
   const owner = await uwu.client.users.fetch(uwu.data.ownerId)
   const embed = new MessageEmbed()
-    .setColor(uwu.color)
+    .setColor(uwu.data.color)
     .setTitle('aqui está a lista de comandos!')
     .setDescription(`lembre-se de usar o prefixo **\`${uwu.data.prefix}\`**`)
     .setFooter(`por ${owner.tag}`, `${owner.avatarURL()}`)
