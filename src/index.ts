@@ -36,7 +36,7 @@ const data: ClientData = {
 
 const uwu_db: ClientDatabase = {
   msg: db.msg,
-  hipocrisias: db.hipocrisias,
+  hipocrisias: new RandomList(db.hipocrisias),
   owo: {
     apelidos: new RandomList(db.owo.apelidos),
     cantadas: new RandomList(db.owo.cantadas),
