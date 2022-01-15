@@ -12,10 +12,10 @@ if (!fs.existsSync(env_path)) throw new Error('could not find .env file')
 require('dotenv').config({ path: env_path })
 
 const env: { [key: string]: string } = {}
-;['TOKEN', 'OWNER', 'MINECRAFT_IP'].forEach(option => {
+;['TOKEN', 'OWNER', 'MINECRAFT_IP', 'npm_package_version'].forEach(option => {
   const value = process.env[option]
   if (value !== undefined) env[option] = value
-  else throw new Error(`${option} missing in .env`)
+  else throw new Error(`missing environment variable: ${option}`)
 })
 
 const client = new Client({
@@ -29,8 +29,9 @@ const client = new Client({
 
 const data: ClientData = {
   prefix: 'uwu',
-  ownerId: process.env.OWNER!,
-  minecraftIp: process.env.MINECRAFT_IP!,
+  ownerId: env['OWNER'],
+  minecraftIp: env['MINECRAFT_IP'],
+  version: env['npm_package_version'],
   color: '#ffffff',
 }
 

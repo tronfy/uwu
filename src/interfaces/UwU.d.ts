@@ -12,6 +12,7 @@ interface ClientData {
   prefix: string
   ownerId: string
   minecraftIp: string
+  version: string
   color: string
 }
 
