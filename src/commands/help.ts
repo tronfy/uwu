@@ -8,7 +8,10 @@ export const run: Command = async (uwu, message, _args) => {
     .setColor(uwu.data.color)
     .setTitle('aqui está a lista de comandos!')
     .setDescription(`lembre-se de usar o prefixo **\`${uwu.data.prefix}\`**`)
-    .setFooter({ text: `por ${owner.tag}`, iconURL: owner.avatarURL() })
+    .setFooter({
+      text: `uwu v${uwu.data.version}, por ${owner.tag}`,
+      iconURL: owner.avatarURL(),
+    })
 
   for (const cmd of uwu.commands)
     if (cmd[1].description) {
