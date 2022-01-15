@@ -17,10 +17,10 @@ interface ClientData {
 
 interface ClientDatabase {
   msg: { [key: string]: string }
-  hipocrisias: string[]
+  hipocrisias: RandomList<string>
   owo: {
-    apelidos: RandomList
-    cantadas: RandomList
-    emotes: RandomList
+    apelidos: RandomList<string>
+    cantadas: RandomList<string>
+    emotes: RandomList<string>
   }
 }

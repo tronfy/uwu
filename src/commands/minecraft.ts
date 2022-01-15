@@ -1,11 +1,11 @@
 import { MessageEmbed } from 'discord.js'
-import mc from 'minecraft-server-util'
+import { status } from 'minecraft-server-util'
 import { logE } from '../util/log'
 
 export const description = 'info do server de mine'
 
 export const run: Command = (uwu, message, _args) => {
-  mc.status(uwu.data.minecraftIp, 25565)
+  status(uwu.data.minecraftIp, 25565)
     .then(res => {
       const version = res.version.name.toLowerCase()
       const motd = res.motd.clean.split('\n').map(x => x.trim())
