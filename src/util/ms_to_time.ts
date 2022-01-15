@@ -1,4 +1,4 @@
-module.exports = (duration, detailed = true) => {
+export default (duration: number, detailed = true): string => {
   let milliseconds = Math.floor(duration % 1000),
     seconds = Math.floor((duration / 1000) % 60),
     minutes = Math.floor((duration / (1000 * 60)) % 60),
