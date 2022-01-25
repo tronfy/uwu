@@ -1,4 +1,4 @@
-import { Client, Intents, Collection, Message, Awaitable } from 'discord.js'
+import { Client, Intents, Collection, Message } from 'discord.js'
 import fs from 'fs'
 import db from './db.json'
 import { logI } from './util/log'
@@ -6,6 +6,7 @@ import UwU, { ClientData, ClientDatabase } from './interfaces/UwU'
 import RandomList from './util/RandomList'
 import ready from './events/ready'
 import messageCreate from './events/messageCreate'
+import shutdown from './util/shutdown'
 
 const env_path = '../.env'
 if (!fs.existsSync(env_path)) throw new Error('could not find .env file')
@@ -65,11 +66,7 @@ for (const file of commands) {
   uwu.commands.set(name, command)
 }
 
-process.on('SIGINT', () => {
-  uwu.client.destroy()
-  logI('logging out\n')
-  process.exit(0)
-})
+process.on('SIGINT', () => shutdown(uwu))
 
 logI('logging in...')
 uwu.client.login(process.env.TOKEN)
